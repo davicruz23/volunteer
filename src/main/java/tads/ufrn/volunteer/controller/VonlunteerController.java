@@ -28,6 +28,11 @@ public class VonlunteerController {
         return ResponseEntity.ok(service.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Volunteer> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+
     @GetMapping
     public ResponseEntity<Page<VolunteerListingDTO>> index(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Page<Volunteer> volunteerPage = service.index(page, size);
